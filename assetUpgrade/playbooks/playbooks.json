@@ -1,0 +1,478 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Asset Upgrade - 1.0.0",
+      "description": "Sample playbooks for \"Asset Upgrade\" connector. If you are planning to use any of the sample playbooks in your environment",
+      "visible": true,
+      "image": null,
+      "uuid": "03d11375-2273-43cd-b00b-0c0c67345e80",
+      "id": 101,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Moxa Backup Configuration",
+          "aliasName": null,
+          "tag": null,
+          "description": "This playbook will export the CLI configuration file (.conf) from the Moxa device with the Credentials you have specified in the 'Configuration' parameters.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1791303055,
+          "collection": "/api/3/workflow_collections/03d11375-2273-43cd-b00b-0c0c67345e80",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/80867720-c853-4a7c-8616-971c70825ab4",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Moxa Backup Configuration",
+              "description": null,
+              "arguments": {
+                "name": "Asset Upgrade",
+                "config": "c25f9d25-a741-432a-88c9-efe512d27bd7",
+                "params": {
+                  "port": "443",
+                  "password": "",
+                  "protocol": "HTTPS",
+                  "sign_config": false,
+                  "server_address": "",
+                  "is_running_config": "Startup",
+                  "include_default_config": true
+                },
+                "version": "1.0.0",
+                "connector": "assetUpgrade",
+                "operation": "moxa_backup_config",
+                "operationTitle": "Moxa Backup Configuration",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "bb227d00-3c73-4665-b1cc-2b4345f7e63e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "80867720-c853-4a7c-8616-971c70825ab4"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Moxa Login Check",
+              "targetStep": "/api/3/workflow_steps/bb227d00-3c73-4665-b1cc-2b4345f7e63e",
+              "sourceStep": "/api/3/workflow_steps/80867720-c853-4a7c-8616-971c70825ab4",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "2346165b-3570-4eed-b0b3-16a173d52fcc"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "380ab9f7-17b7-4fab-b086-ec4c44cc3e75",
+          "id": 1033,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "SSH Execute remote command",
+          "aliasName": null,
+          "tag": null,
+          "description": "This playbook will execute the specified SSH command on a server as part of your playbooks with the Credentials you have specified in the 'Configuration' parameters.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1791303541,
+          "collection": "/api/3/workflow_collections/03d11375-2273-43cd-b00b-0c0c67345e80",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/80268049-e4c8-4fde-aed8-a2d506e52b5a",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "SSH Execute remote command",
+              "description": null,
+              "arguments": {
+                "name": "Asset Upgrade",
+                "config": "c25f9d25-a741-432a-88c9-efe512d27bd7",
+                "params": {
+                  "host": "",
+                  "port": "22",
+                  "timeout": 10,
+                  "cmd_list": "169.254.0..1",
+                  "wait_time": 10,
+                  "interactive": false
+                },
+                "version": "1.0.0",
+                "connector": "assetUpgrade",
+                "operation": "ssh_execute_command",
+                "operationTitle": "SSH Execute remote command",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "6c922c8b-add3-49cc-bdae-eb164b4db820"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "80268049-e4c8-4fde-aed8-a2d506e52b5a"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Moxa Login Check",
+              "targetStep": "/api/3/workflow_steps/6c922c8b-add3-49cc-bdae-eb164b4db820",
+              "sourceStep": "/api/3/workflow_steps/80268049-e4c8-4fde-aed8-a2d506e52b5a",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "d61205dd-4c7a-4207-8c8f-25ae6c4457c4"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "5755d568-bcd6-46ee-8bca-ada16743a013",
+          "id": 1035,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Moxa Login Check",
+          "aliasName": null,
+          "tag": null,
+          "description": "This playbook will verify the login connectivity to Moxa switch with the Credentials you have specified in the 'Configuration' parameters.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1791302958,
+          "collection": "/api/3/workflow_collections/03d11375-2273-43cd-b00b-0c0c67345e80",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/4aaddd11-b756-4442-aff1-fc95e7af95e7",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Moxa Login Check",
+              "description": null,
+              "arguments": {
+                "name": "Asset Upgrade",
+                "config": "c25f9d25-a741-432a-88c9-efe512d27bd7",
+                "params": {
+                  "port": "443",
+                  "protocol": "HTTPS",
+                  "server_address": ""
+                },
+                "version": "1.0.0",
+                "connector": "assetUpgrade",
+                "operation": "moxa_login_check",
+                "operationTitle": "Moxa Login Check",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a609ad92-9c62-4cb9-802d-29cc8d1069dc"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "4aaddd11-b756-4442-aff1-fc95e7af95e7"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Moxa Login Check",
+              "targetStep": "/api/3/workflow_steps/a609ad92-9c62-4cb9-802d-29cc8d1069dc",
+              "sourceStep": "/api/3/workflow_steps/4aaddd11-b756-4442-aff1-fc95e7af95e7",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "2acc325f-6d17-41d8-99ef-5e348e5300fd"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "a3015ab1-9120-40d3-86ef-f1d35bccdf8d",
+          "id": 1032,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete local file",
+          "aliasName": null,
+          "tag": null,
+          "description": "This playbook will delete a local file in /tmp",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1791303589,
+          "collection": "/api/3/workflow_collections/03d11375-2273-43cd-b00b-0c0c67345e80",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/09ae9c9d-cd64-40a8-9e24-241a5a05d6fd",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete local file",
+              "description": null,
+              "arguments": {
+                "name": "Asset Upgrade",
+                "config": "c25f9d25-a741-432a-88c9-efe512d27bd7",
+                "params": {
+                  "filepath": ""
+                },
+                "version": "1.0.0",
+                "connector": "assetUpgrade",
+                "operation": "delete_local_file",
+                "operationTitle": "Delete local file",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "4710904f-52f8-48eb-9da9-babf6d2569ac"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "09ae9c9d-cd64-40a8-9e24-241a5a05d6fd"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Moxa Login Check",
+              "targetStep": "/api/3/workflow_steps/4710904f-52f8-48eb-9da9-babf6d2569ac",
+              "sourceStep": "/api/3/workflow_steps/09ae9c9d-cd64-40a8-9e24-241a5a05d6fd",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "117e6f70-169d-4727-bd8f-73ded7d8526a"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "e08420ba-f082-4530-affd-7d250906427d",
+          "id": 1036,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Moxa Upgrade",
+          "aliasName": null,
+          "tag": null,
+          "description": "This playbook will upgrade a Moxa switch based on an IRI Firmware with the Credentials you have specified in the 'Configuration' parameters.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1791303471,
+          "collection": "/api/3/workflow_collections/03d11375-2273-43cd-b00b-0c0c67345e80",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/4bfa7ae6-d054-4a68-8393-02ac61bbe72a",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Moxa Upgrade",
+              "description": null,
+              "arguments": {
+                "name": "Asset Upgrade",
+                "config": "c25f9d25-a741-432a-88c9-efe512d27bd7",
+                "params": {
+                  "port": "443",
+                  "file_iri": "",
+                  "protocol": "HTTPS",
+                  "server_address": ""
+                },
+                "version": "1.0.0",
+                "connector": "assetUpgrade",
+                "operation": "moxa_upgrade",
+                "operationTitle": "Moxa Upgrade",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "23bd4e11-bdc0-4eee-87f0-c56ebac26de1"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "4bfa7ae6-d054-4a68-8393-02ac61bbe72a"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Moxa Login Check",
+              "targetStep": "/api/3/workflow_steps/23bd4e11-bdc0-4eee-87f0-c56ebac26de1",
+              "sourceStep": "/api/3/workflow_steps/4bfa7ae6-d054-4a68-8393-02ac61bbe72a",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "0a492bc1-ce34-4d65-96e7-e72b6816fe1e"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "fb476509-9cb2-43bf-bd86-fcb8b0a58d4a",
+          "id": 1034,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": []
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "asset-upgrade"
+  ]
+}
