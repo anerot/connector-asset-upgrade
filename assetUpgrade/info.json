@@ -1,0 +1,294 @@
+{
+    "name": "assetUpgrade",
+    "version": "1.0.0",
+    "label": "Asset Upgrade",
+    "description": "Asset Upgrade connector is part of the Solution Pack Asset Upgrade Management.\nEach connector configuration stores the tuple username/password.\nEach Action requires IP/Port.\nIt currently supports:\n- MOXA switches (Login check, Backup, Upgrade)\n- SSH Cli",
+    "publisher": "ArnaudN",
+    "icon_small_name": "",
+    "icon_large_name": "",
+    "id": 202,
+    "configuration": {
+        "fields": [
+            {
+                "title": "Username",
+                "type": "text",
+                "name": "username",
+                "required": true,
+                "visible": true,
+                "editable": true
+            },
+            {
+                "title": "Password",
+                "type": "password",
+                "name": "password",
+                "required": true,
+                "visible": true,
+                "editable": true
+            }
+        ]
+    },
+    "operations": [
+        {
+            "title": "Moxa Login Check",
+            "operation": "moxa_login_check",
+            "description": "Action to verify the login connectivity to Moxa switch with the Credentials you have specified in the 'Configuration' parameters.",
+            "parameters": [
+                {
+                    "title": "Server Address",
+                    "type": "text",
+                    "name": "server_address",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                },
+                {
+                    "title": "Server Port",
+                    "type": "text",
+                    "name": "port",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "443"
+                },
+                {
+                    "title": "Protocol",
+                    "type": "select",
+                    "name": "protocol",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "HTTPS",
+                    "options": [
+                        "HTTP",
+                        "HTTPS"
+                    ]
+                }
+            ],
+            "open": false
+        },
+        {
+            "operation": "moxa_backup_config",
+            "title": "Moxa Backup Configuration",
+            "description": "Exports the CLI configuration file (.conf) from the Moxa device with the Credentials you have specified in the 'Configuration' parameters.",
+            "parameters": [
+                {
+                    "title": "Server Address",
+                    "type": "text",
+                    "name": "server_address",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                },
+                {
+                    "title": "Server Port",
+                    "type": "text",
+                    "name": "port",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "443"
+                },
+                {
+                    "title": "Protocol",
+                    "type": "select",
+                    "name": "protocol",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "HTTPS",
+                    "options": [
+                        "HTTP",
+                        "HTTPS"
+                    ]
+                },
+                {
+                    "title": "Config Type",
+                    "type": "select",
+                    "name": "is_running_config",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "Startup",
+                    "options": [
+                        "Running",
+                        "Startup"
+                    ]
+                },
+                {
+                    "title": "Include Default Config",
+                    "type": "checkbox",
+                    "name": "include_default_config",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": true
+                },
+                {
+                    "title": "Sign Config",
+                    "type": "checkbox",
+                    "name": "sign_config",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": false
+                },
+                {
+                    "title": "Encryption Password",
+                    "type": "text",
+                    "name": "password",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": ""
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Moxa Upgrade",
+            "operation": "moxa_upgrade",
+            "description": "Upgrade a Moxa switch based on an IRI Firmware with the Credentials you have specified in the 'Configuration' parameters.",
+            "parameters": [
+                {
+                    "title": "Server Address",
+                    "type": "text",
+                    "name": "server_address",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                },
+                {
+                    "title": "Server Port",
+                    "type": "text",
+                    "name": "port",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "443"
+                },
+                {
+                    "title": "Protocol",
+                    "type": "select",
+                    "name": "protocol",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "HTTPS",
+                    "options": [
+                        "HTTP",
+                        "HTTPS"
+                    ]
+                },
+                {
+                    "title": "Attachment IRI",
+                    "type": "text",
+                    "name": "file_iri",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "placeholder": "e.g. /api/3/attachments/07810a12-ee25-4a21-a12a-0673163a0737"
+                }
+            ],
+            "open": false
+        },
+        {
+            "operation": "ssh_execute_command",
+            "annotation": "SSH_execute_command",
+            "description": "Executes the specified SSH command on a server as part of your playbooks with the Credentials you have specified in the 'Configuration' parameters.",
+            "title": "SSH Execute remote command",
+            "parameters": [
+                {
+                    "title": "Host",
+                    "type": "text",
+                    "name": "host",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Specify the Hostname of the server to which you will connect and execute commands or python scripts."
+                },
+                {
+                    "title": "Port",
+                    "type": "text",
+                    "name": "port",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "22",
+                    "tooltip": "Specify the Port number used for connecting to the server."
+                },
+                {
+                    "title": "Timeout",
+                    "type": "text",
+                    "name": "timeout",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": 10,
+                    "tooltip": "Specify the timeout value after which the connection to the server is dropped."
+                },
+                {
+                    "title": "Interactive Mode",
+                    "type": "checkbox",
+                    "name": "interactive",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": false,
+                    "tooltip": "Enable this option to execute a list of commands sequentially in a single session. This mode is necessary to handle interactive prompts, such as \"Do you want to continue? (y/n)\", that may appear during the execution of commands."
+                },
+                {
+                    "title": "Commands",
+                    "type": "text",
+                    "name": "cmd_list",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Specify the command that to execute on the SSH device. You can provide commands in the .csv or the list format.",
+                    "placeholder": "e.g. [\"\\n\",\"copy running-config startup-config\",\"exit\"]"
+                },
+                {
+                    "title": "Wait Time",
+                    "type": "text",
+                    "name": "wait_time",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": 10,
+                    "tooltip": "Specify the wait time for Interactive Command."
+                }
+            ],
+            "output_schema": {},
+            "enabled": true
+        },
+        {
+            "operation": "delete_local_file",
+            "annotation": "delete_local_file",
+            "description": "Delete a local file in /tmp",
+            "title": "Delete local file",
+            "parameters": [
+                {
+                    "title": "FilePath",
+                    "type": "text",
+                    "name": "filepath",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Specify the filepath in /tmp",
+                    "placeholder": "e.g. /tmp/my_file"
+                }
+            ]
+        }
+    ],
+    "category": [
+        "OT & IoT Security"
+    ],
+    "contributor": null,
+    "active": true,
+    "cs_compatible": true,
+    "system": false,
+    "playbook_collections": [],
+    "icon_small": "",
+    "icon_large": "",
+    "help_online": null,
+    "vendor_version": null
+}
